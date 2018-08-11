@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Balivana</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.10/css/uikit.min.css" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.10/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.10/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="./css/submit.css">
+    <script src="js/submit.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="submition">
+            <fieldset class="uk-fieldset uk-position-top-center">
+                <legend class="uk-legend ">Submit a Balisong</legend>
+                <div class="uk-margin">
+                    <label for="knife-name"><b>*</b>Knife Name:</label><br>
+                    <input type="text" class="uk-input uk-form-small uk-form-width-medium" name="knife-name" id="name"><br>
+                </div>
+                    
+                <div class="uk-margin">
+                    <label for="knife-maker"><b>*</b>Manufacturer:</label><br>
+                    <input type="text" class="uk-input uk-form-small uk-form-width-medium" name="knife-maker" id="maker"><br>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="knife-price"><b>*</b>Retail price in USD:</label><br>
+                    <input type="number" class="uk-input uk-form-small uk-form-width-medium" name="knife-price" id="price" step="1.00"><br>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="knife-handle">Handle Length (in inches)</label><br>
+                    <input type="number" class="uk-input uk-form-small uk-form-width-medium" name="knife-handle" id="handle" step="0.01"><br>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="knife-blade">Blade Length (in inches)</label><br>
+                    <input type="number" class="uk-input uk-form-small uk-form-width-medium" name="knife-blade" id="blade" step="0.01"><br>
+                </div>
+
+                <div class="uk-margin">
+                <label for="knife-weight">Weight (in ounces)</label><br>
+                <input type="number" class="uk-input uk-form-small uk-form-width-medium" name="knife-weight" id="weight" step="0.01"><br>
+                </div>
+            
+                <div class="uk-margin">
+                    <div class="uk-form-select data-uk-form-select">
+                        <label for="knife-pivots"><b>*</b>Pivot System:</label><br>
+                        <select name="knife-pivots" class="uk-select uk-form-small uk-form-width-medium" id="pivot">
+                            <option value="washers">Washers</option>
+                            <option value="bushings">Bushings</option>
+                            <option value="bearings">Bearings</option>
+                        </select><br>
+                    </div>
+                </div>
+
+                <input type="submit" class="uk-button uk-form-width-medium" id="submit"/>
+
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
