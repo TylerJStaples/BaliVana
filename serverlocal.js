@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path")
 const model = require("./models");
+const exphbs = require("express-handlebars");
 require("dotenv").config();
 const PORT = 3000;
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -24,16 +27,13 @@ db.on("error", (err) => {
     console.log(err);
 });
 
-app.get("/", (req, res) => {
-    res.sendFile(path.resolve("./public/home.html"));
-});
+app.get("/", (req, res)=>{
+    res.sendFile(path.resolve("./public/index.html"));
+})
 
 app.get("/all", (req, res) => {
-    model.balisong.find((err, found) => {
-        if(err){
-            console.log(err)
-        }
-        res.json(found);
+    model.balisong.find({}).then(found=>{
+        res.render("home", {knife: found})
     });
 });
 
@@ -57,7 +57,7 @@ app.post("/submit", (req, res) => {
 });
 
 app.get("/submit", (req, res) => {
-    res.sendFile(path.resolve("./public/submit.html"));
+    res.render("submit");
 });
 
 app.listen(PORT, () => {
