@@ -1,0 +1,11 @@
+#info{
+  position: relative;
+  bottom: 50px;
+}
+#card{
+  max-height: 380;
+}
+#img{
+  max-height: 200px;
+  min-height: 250px
+}

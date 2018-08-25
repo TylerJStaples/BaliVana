@@ -3,13 +3,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path")
 const model = require("./models");
-const exphbs = require("express-handlebars");
 require("dotenv").config();
-const PORT = 3000;
+const PORT = 3001;
 const app = express();
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
-app.set("view engine", "handlebars");
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static("views/src"))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -27,6 +24,7 @@ db.on("error", (err) => {
     console.log(err);
 });
 
+/*
 app.get("/", (req, res)=>{
     res.sendFile(path.resolve("./public/index.html"));
 })
@@ -59,7 +57,8 @@ app.post("/submit", (req, res) => {
 app.get("/submit", (req, res) => {
     res.render("submit");
 });
+*/
 
 app.listen(PORT, () => {
-    console.log("app running on 3000");
+    console.log("app running on " + PORT);
 });

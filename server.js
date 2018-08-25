@@ -4,9 +4,8 @@ const bodyParser = require("body-parser");
 const path = require("path")
 const model = require("./models");
 require("dotenv").config();
-const PORT = 3000;
+const PORT = 3001;
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -27,15 +26,13 @@ db.on("error", (err)=>{
 });
 
 app.get("/", (req, res) => {
-    res.redirect("/all");
+    res.send("Home page")
 });
 
 app.get("/all", (req, res) => {
     model.balisong.find((err, found) => {
-        if(err){
-            console.log(err)
-        }
-        res.json(found);
+        res.render("home", {knife: found});
+        console.log(err);
     });
 });
 
@@ -59,7 +56,7 @@ app.post("/submit", (req, res) => {
 });
 
 app.get("/submit", (req, res) => {
-    res.sendFile(path.resolve("./public/submit.html"));
+    res.render("submit");
 });
 
 app.listen(PORT, () => {
